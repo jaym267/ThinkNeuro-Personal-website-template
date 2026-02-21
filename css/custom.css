@@ -2,10 +2,20 @@
  * Your custom CSS file
  *************************************************************************/
 
-.h2 {
+.front_page h2, a{
   color: #007bff;
 }
 
+.banner {
+  background-color: rgb(40, 43, 43);
+}
+body {
+  background-color:rgb(6, 19, 31) ;
+}
+.text {
+  font-style: italic;
+  color: rgb(243, 238, 238);
+}
 .custom-textbox {
   width: 240px;
 }
