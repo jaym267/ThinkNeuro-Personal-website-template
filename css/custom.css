@@ -3,14 +3,14 @@
  *************************************************************************/
 
 .front_page h2, a{
-  color: #007bff;
+  color: #f8f6f6e8;
 }
 
 .banner {
-  background-color: rgb(40, 43, 43);
+  background-color: rgb(255, 255, 255);
 }
 body {
-  background-color:rgb(6, 19, 31) ;
+  background-color:rgb(40, 69, 61) ;
 }
 .text {
   font-style: italic;
@@ -40,11 +40,17 @@ body {
 
 #share-url-copy-prompt {
   display: none;
-  color: #007bff;
+  color: #51677e;
 }
 .banner p.text, .banner h2{
   display: none;
 }
 .front_page {
   color: white;
+}
+
+.front_page h1,
+.front_page h2, 
+.front_page h3 {
+  color: white !important;
 }
