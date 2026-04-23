@@ -10,7 +10,7 @@
   background-color: rgb(255, 255, 255);
 }
 body {
-  background-color:rgb(40, 69, 61) ;
+  background-color:rgba(105, 108, 116, 0.877) ;
 }
 .text {
   font-style: italic;
@@ -53,4 +53,9 @@ body {
 .front_page h2, 
 .front_page h3 {
   color: white !important;
+}
+
+#text-only {
+  color: white;
+  font-family: 'Georgia', 'Times New Roman', Times, serif; /* */
 }
