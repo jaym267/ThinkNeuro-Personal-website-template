@@ -9,8 +9,37 @@
 .banner {
   background-color: rgb(255, 255, 255);
 }
+
+.hero-banner {
+  min-height: clamp(360px, 72vw, 860px);
+  padding: clamp(20px, 4vw, 44px) 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #48658f;
+}
+
+.banner-title-image {
+  width: min(92vw, 980px);
+  max-width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.16));
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 body {
-  background-color:rgba(105, 108, 116, 0.877) ;
+  background-color: rgba(105, 108, 116, 0.877);
 }
 .text {
   font-style: italic;
@@ -50,12 +79,31 @@ body {
 }
 
 .front_page h1,
-.front_page h2, 
+.front_page h2,
 .front_page h3 {
   color: white !important;
 }
 
 #text-only {
   color: white;
-  font-family: 'Georgia', 'Times New Roman', Times, serif; /* */
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+}
+
+#sculptures-heading,
+#ai-microproject-heading {
+  color: white;
+  font-size: 50px;
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  margin: 30px 0 0 0;
+}
+
+@media (max-width: 700px) {
+  .hero-banner {
+    min-height: auto;
+    padding: 18px 14px;
+  }
+
+  .banner-title-image {
+    width: min(96vw, 700px);
+  }
 }
