@@ -24,13 +24,21 @@
 </head>
 
 <body>
+  <div class="dreamscape" aria-hidden="true">
+    <div class="dream-orb dream-orb-1"></div>
+    <div class="dream-orb dream-orb-2"></div>
+    <div class="dream-orb dream-orb-3"></div>
+    <canvas id="dream-stars" class="dream-stars"></canvas>
+  </div>
   <div class="menu-container"></div>
   <div class="content-container">
     <!-------------------------------------------------------------------------------------------->
     <!--Start Header-->
-    <div class="banner" style="background: url('img/title.png') no-repeat center; background-size: cover; min-height: 500px; display: flex; align-items: center; justify-content: center;">
+    <div class="banner hero-banner">
 
-             <div class="flex-item flex-column">
+      <img class="banner-title-image" src="img/title.png" alt="Jayden Mendez title artwork" loading="eager">
+    </div>
+    <!--
             <h2 class="front_page">𓆈</h2>
             <p class="text">
 Hello,thank you for visiting! I am a high school student with a strong interest in pursuing Computer Science, with a particular focus on Artificial Intelligence and Machine Learning.
@@ -41,10 +49,11 @@ Hello,thank you for visiting! I am a high school student with a strong interest 
                   <div class="flex-item flex-column">
             <h2 class="front_page">𓆈</h2>
             <p class="text">
-Hello, my name is Jayden Mendez, and I am a high school student with a strong interest in pursuing Computer Science, with a particular focus on Artificial Intelligence and Machine Learning.
+Hello, thank you for visiting! I am a highool student with a strong interest in pursuing Computer Science, with a particular focus on Artificial Intelligence and Machine Learning.
             </p>
           </div>
         </div>
+    -->
     <!--End Header-->
     <!-------------------------------------------------------------------------------------------->
     <div class="content">
@@ -56,17 +65,31 @@ Hello, my name is Jayden Mendez, and I am a high school student with a strong in
           </div>
           <div class="flex-item flex-column">
             <p class="text text-large">
-              <a target="_blank" href="https://www.linkedin.com/in/jaydenmendez/">Linkedin</a>, User:jaydenmendez<br>
-              <a target="_blank" href="https://github.com/jaym267">Github</a>, User:jaym267 <br>
-              <a target="_blank" href="javascript:void(0)\">Gmail</a>, User:jaydenmendezips@gmail.com <br>
+              <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jaydenmendez/">Linkedin</a>, User:jaydenmendez<br>
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/jaym267">Github</a>, User:jaym267 <br>
+              <a href="mailto:jaydenmendezips@gmail.com">Gmail</a>, User:jaydenmendezips@gmail.com <br>
             </p>
           </div>
         </div>
         <div class="flex-row">
           <div class="flex-item flex-column">
-            <p class="text add-top-margin">
-              Learn of my passion projects
-            </u>
+            <section class="identity-spotlight">
+              <div class="identity-copy">
+                <span class="identity-kicker">Visual Identity</span>
+                <p class="identity-description">
+                </p>
+              </div>
+              <a class="identity-art" href="img/A representation of who I am.png" target="_blank" rel="noopener noreferrer">
+                <img src="img/A representation of who I am.png" alt="A representation of who I am artwork" loading="eager">
+              </a>
+            </section>
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item flex-column">
+            <p class="text add-top-margin intro-note">
+              Scroll to explore my passion projects
+            </p>
           </div>
         </div>
         <!--End Intro-->
@@ -103,6 +126,11 @@ Hello, my name is Jayden Mendez, and I am a high school student with a strong in
                 <img src="img/3 (1) 12 (1).jpg" alt="Face planter sculpture with a green plant" loading="lazy">
               </a>
             </div>
+            <h2 id="ai-microproject-heading">AI microproject</h2>
+            <p class="ai-project-description">Idea: An AI-powered chatbot that allows users to upload images through an image-based analysis software to give them descriptive summaries and risk factors of any skin or parasitic infections visible on their body.</p>
+            <a class="gallery-card ai-project-card" href="img/AI Microproject.png" target="_blank" rel="noopener noreferrer">
+              <img src="img/AI Microproject.png" alt="AI microproject concept graphic" loading="lazy">
+            </a>
             <h3>Nested List</h3>
             <p class="text">
               Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel
@@ -1070,6 +1098,7 @@ Hello, my name is Jayden Mendez, and I am a high school student with a strong in
     </div>
     <div class="footer-container"></div>
   </div>
+  <script src="js/dreamscape.js"></script>
 </body>
 
 </html>
