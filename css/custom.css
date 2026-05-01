@@ -339,6 +339,14 @@ h3 {
   align-items: start;
 }
 
+.page-hero-grid > *,
+.identity-spotlight > *,
+.ai-project-layout > *,
+.info-grid > *,
+.project-grid > * {
+  min-width: 0;
+}
+
 .section-header {
   display: grid;
   gap: 10px;
@@ -694,6 +702,12 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .info-card,
+  .identity-art {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .poetry-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -732,6 +746,16 @@ h3 {
   .poetry-gallery,
   .sculptures-gallery {
     grid-template-columns: 1fr;
+  }
+
+  .page-hero-copy,
+  .identity-copy,
+  .section-header {
+    gap: 12px;
+  }
+
+  .identity-spotlight {
+    gap: 18px;
   }
 
   .gallery-card,
