@@ -285,4 +285,37 @@
   } else if (typeof motionQuery.addListener === "function") {
     motionQuery.addListener(resizeCanvas);
   }
+
+  function initReveal() {
+    var revealItems = document.querySelectorAll(".reveal");
+    if (!revealItems.length) {
+      return;
+    }
+
+    if (motionQuery.matches || !("IntersectionObserver" in window)) {
+      for (var i = 0; i < revealItems.length; i++) {
+        revealItems[i].classList.add("is-visible");
+      }
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) {
+          entries[i].target.classList.add("is-visible");
+          observer.unobserve(entries[i].target);
+        }
+      }
+    }, {
+      root: null,
+      rootMargin: "0px 0px -8% 0px",
+      threshold: 0.16
+    });
+
+    for (var j = 0; j < revealItems.length; j++) {
+      observer.observe(revealItems[j]);
+    }
+  }
+
+  initReveal();
 })();
