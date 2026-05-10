@@ -30,11 +30,11 @@
   };
 
   var starPalette = [
-    [255, 244, 250],
-    [219, 236, 255],
-    [242, 225, 255],
-    [255, 237, 224],
-    [215, 255, 241]
+    [255, 255, 248],
+    [226, 242, 255],
+    [255, 240, 218],
+    [219, 255, 246],
+    [236, 232, 255]
   ];
 
   function randomBetween(min, max) {
@@ -61,8 +61,8 @@
 
   function createStars() {
     var area = state.width * state.height;
-    var count = Math.round(area / 12000);
-    count = clamp(count, 65, 165);
+    var count = Math.round(area / 7800);
+    count = clamp(count, 95, 260);
 
     if (motionQuery.matches) {
       count = Math.round(count * 0.55);
@@ -74,14 +74,15 @@
       state.stars.push({
         x: Math.random() * state.width,
         y: Math.random() * state.height,
-        size: randomBetween(0.6, 2.2),
-        alpha: randomBetween(0.3, 0.85),
+        size: Math.pow(randomBetween(0.38, 1.55), 1.35),
+        alpha: randomBetween(0.34, 0.96),
         depth: randomBetween(0.18, 1),
         phase: Math.random() * Math.PI * 2,
-        twinkleSpeed: randomBetween(0.7, 1.8),
-        driftX: randomBetween(4, 18),
-        driftY: randomBetween(4, 24),
-        spark: Math.random() < 0.18,
+        twinkleSpeed: randomBetween(0.28, 1.35),
+        driftX: randomBetween(0.8, 6.5),
+        driftY: randomBetween(0.8, 8.5),
+        spark: Math.random() < 0.09,
+        halo: Math.random() < 0.22,
         color: color
       });
     }
@@ -154,14 +155,14 @@
     context.translate(x, y);
     context.strokeStyle = rgba(color, alpha);
     context.lineWidth = Math.max(0.65, size * 0.35);
-    context.shadowBlur = size * 10;
-    context.shadowColor = rgba(color, alpha * 0.9);
+    context.shadowBlur = size * 6;
+    context.shadowColor = rgba(color, alpha * 0.75);
 
     context.beginPath();
-    context.moveTo(-size * 2.2, 0);
-    context.lineTo(size * 2.2, 0);
-    context.moveTo(0, -size * 2.2);
-    context.lineTo(0, size * 2.2);
+    context.moveTo(-size * 2.7, 0);
+    context.lineTo(size * 2.7, 0);
+    context.moveTo(0, -size * 2.7);
+    context.lineTo(0, size * 2.7);
     context.stroke();
 
     context.rotate(Math.PI / 4);
@@ -176,7 +177,37 @@
     context.globalAlpha = 1;
     context.fillStyle = rgba(color, alpha);
     context.beginPath();
-    context.arc(0, 0, size * 0.7, 0, Math.PI * 2);
+    context.arc(0, 0, Math.max(0.55, size * 0.58), 0, Math.PI * 2);
+    context.fill();
+    context.restore();
+  }
+
+  function drawTinyStar(x, y, size, color, alpha) {
+    var outer = Math.max(1.25, size * 2.6);
+    var inner = Math.max(0.42, outer * 0.38);
+
+    context.save();
+    context.translate(x, y);
+    context.rotate(Math.PI / 10);
+    context.fillStyle = rgba(color, alpha);
+    context.shadowBlur = size * 4.2;
+    context.shadowColor = rgba(color, alpha * 0.55);
+    context.beginPath();
+
+    for (var i = 0; i < 10; i++) {
+      var radius = i % 2 === 0 ? outer : inner;
+      var angle = -Math.PI / 2 + i * Math.PI / 5;
+      var pointX = Math.cos(angle) * radius;
+      var pointY = Math.sin(angle) * radius;
+
+      if (i === 0) {
+        context.moveTo(pointX, pointY);
+      } else {
+        context.lineTo(pointX, pointY);
+      }
+    }
+
+    context.closePath();
     context.fill();
     context.restore();
   }
@@ -214,12 +245,32 @@
     }
 
     context.save();
-    context.fillStyle = rgba(star.color, alpha);
-    context.shadowBlur = star.size * 10;
-    context.shadowColor = rgba(star.color, alpha * 0.85);
-    context.beginPath();
-    context.arc(x, y, star.size, 0, Math.PI * 2);
-    context.fill();
+
+    if (star.halo) {
+      var gradient = context.createRadialGradient(x, y, 0, x, y, star.size * 5.6);
+      gradient.addColorStop(0, rgba(star.color, alpha * 0.34));
+      gradient.addColorStop(0.42, rgba(star.color, alpha * 0.12));
+      gradient.addColorStop(1, rgba(star.color, 0));
+      context.fillStyle = gradient;
+      context.beginPath();
+      context.arc(x, y, star.size * 5.6, 0, Math.PI * 2);
+      context.fill();
+    }
+
+    drawTinyStar(x, y, star.size, star.color, alpha);
+
+    if (star.size > 1.08 && alpha > 0.48) {
+      context.globalAlpha = alpha * 0.56;
+      context.strokeStyle = rgba(star.color, alpha);
+      context.lineWidth = 0.55;
+      context.beginPath();
+      context.moveTo(x - star.size * 2.1, y);
+      context.lineTo(x + star.size * 2.1, y);
+      context.moveTo(x, y - star.size * 2.1);
+      context.lineTo(x, y + star.size * 2.1);
+      context.stroke();
+    }
+
     context.restore();
   }
 
